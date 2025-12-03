@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"/><title>Three Tier App</title></head>
+  <body>
+    <div id="root">
+      <h1>Three Tier Demo</h1>
+      <button id="fetch">Call API</button>
+      <pre id="out"></pre>
+    </div>
+    <script>
+      document.getElementById('fetch').onclick = async () => {
+        const res = await fetch('/api/hello'); // via ingress/service to backend
+        const j = await res.json();
+        document.getElementById('out').innerText = JSON.stringify(j, null, 2);
+      };
+    </script>
+  </body>
+</html>
